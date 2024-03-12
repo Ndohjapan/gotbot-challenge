@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transaction Authorization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        font-size: 92.5%;
+        font-family: "Lato", sans-serif;
+      }
+
+      * {
+        line-height: 1.8em;
+      }
+
+      #email {
+        width: 100%;
+        margin: auto;
+        background: #fafafa;
+        padding: 0 0 40px 0;
+      }
+
+      .content {
+        padding: 1.875rem 3.75rem;
+      }
+
+      .table__container {
+        width: 80%;
+      }
+
+      .social__container {
+        width: 50%;
+      }
+
+      @media (max-width: 600px) {
+        #email {
+          width: 100% !important;
+        }
+
+        .table__container {
+          width: 95% !important;
+        }
+
+        .social__container {
+          width: 95% !important;
+        }
+
+        .content {
+          padding: 1rem !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="email">
+    ${header()}
+
+    <!-- Body -->
+    <table
+    role="presentation"
+    border="0"
+    class="table__container"
+    style="margin: auto; min-height: 400px"
+    cellspacing="0"
+  >
+    <tr>
+      <td
+        bgcolor="#FFFFFF"
+        style="border-radius: 0px 0px 20px 20px"
+        class="content"
+      >
+        <div style="margin-top: -50px">
+          <h1 style="font-size: 1.5rem; margin: 0 0 20px 0">
+            Authorize Transaction
+          </h1>
+          <p>Hi ${
+data.fullname
+? capitalizeName(data.fullname)['nameArray'][0]
+: ''
+},</p>
+
+          <p>Use <b>${
+data.code
+}</b> to authorize your pending transaction</p>
+
+          <p>If you did not request this, please ignore this email.</p>
+        </div>
+      </td>
+    </tr>
+  </table>
+${footer()}
+</div>
+</body>
+</html>

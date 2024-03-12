@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+@layer base {
+    input::placeholder {
+        color: #BBB;
+        font-size: 16px;
+    }   
+
+    input[type=file]::-webkit-file-upload-button {
+        @apply bg-[#F0F0F0] text-[#555] border-0 font-nunito p-[10px] rounded-md cursor-pointer;
+    }
+}
+
+@layer components {
+    .max-container {
+        max-width: 1550px;
+        margin: 0 auto;
+        padding: 0 3rem;
+    }
+
+    @media (max-width: 768px) {
+        .max-container {
+            padding: 0 1.5rem;
+        }
+    }
+
+    .footer-title {
+        color: #2B6C57;
+        font-size: 20px;
+        font-family: 'fredoka', sans-serif;
+    }
+
+    .footer-link {
+        @apply font-nunito text-base text-[#2B2B2B] font-[400px];
+    }
+
+    .text-gray {
+        @apply text-[#555];
+    }
+}
+
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar{
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+#pdf-content {
+    width: 210mm;
+    height: 297mm;
+    padding: 4mm;
+}
