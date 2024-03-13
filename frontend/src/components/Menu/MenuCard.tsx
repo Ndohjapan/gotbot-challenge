@@ -6,7 +6,7 @@ interface MenuCardProps {
   name: string;
   categories?: number;
   items?: number;
-  date?: Date;
+  date?: string;
   onClick?: () => void;
   onEditClick?: () => void;
   onDeleteClick?: () => void;
