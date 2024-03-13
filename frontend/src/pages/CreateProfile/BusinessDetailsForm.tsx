@@ -4,11 +4,8 @@ import { BusinessDetails } from "../../types/auth";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { authActions } from "../../redux/slices/authSlice";
 import { getBase64FileSize, getBase64Type } from "../../utils/files";
-import { Country, ICountry, State } from "country-state-city";
 import Field from "../../components/Form/Field";
-import Dropdown from "../../components/Form/Dropdown";
 import Button from "../../components/Button";
-import CountrySelect from "../../components/Form/CountrySelect";
 import PhoneInput from "../../components/Form/PhoneInput";
 import * as yup from "yup";
 
@@ -60,7 +57,7 @@ export default function BusinessDetailsForm({ onSubmit }: BusinessDetailsFormPro
   const profileData = useAppSelector((state) => state.auth.profileData);
 
   const [formData, setFormData] = useState<Partial<BusinessDetails>>(profileData);
-  const { errors, validate, clearErrOnFocus } = useValidator(formData, businessProfileSchema);
+  const { errors, clearErrOnFocus } = useValidator(formData, businessProfileSchema);
 
 
   useEffect(() => {

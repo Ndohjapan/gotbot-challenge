@@ -1,6 +1,5 @@
 import { Sidebar, Menu, MenuItem, MenuItemProps, menuClasses } from "react-pro-sidebar";
 import Logo from "../../assets/logo.svg";
-import RadixIcon from "../../assets/sidebar/radix.svg";
 import MenuIcon from "../../assets/sidebar/menu.svg";
 import SettingsIcon from "../../assets/sidebar/settings.svg";
 import LogoutIcon from "../../assets/sidebar/logout.svg";
