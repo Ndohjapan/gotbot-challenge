@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:5173"
+    networks:
+      - mynetwork
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - mynetwork
+
+  mongodb:
+    image: mongo
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - mynetwork
+
+  redis:
+    image: redis
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+
+volumes:
+  mongodb_data:
