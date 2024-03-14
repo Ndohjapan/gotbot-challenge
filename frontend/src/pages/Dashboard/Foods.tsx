@@ -57,7 +57,7 @@ export default function Foods() {
   const [publishModalVisible, setPublishModalVisible] = useState(false);
   const [confirmationModalVisible, setConfirmationModalVisible] = useState(false);
   const [updateState, setUpdateState] = useState(false);
-  const [selectedFood, setSelectedFood] = useState(null);
+  const [selectedFood, setSelectedFood] = useState("");
   const { errors, validate, clearErrOnFocus } = useValidator(formData, foodSchema);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -245,11 +245,11 @@ export default function Foods() {
                       });
                       setModalVisible(true);
                       setUpdateState(true);
-                      setSelectedFood(menu._id);
+                      setSelectedFood(menu._id || "");
                     }}
                     onDeleteClick={() => {
                       setConfirmationModalVisible(true);
-                      setSelectedFood(menu._id);
+                      setSelectedFood(menu._id || "");
                     }}
                   />
                 );

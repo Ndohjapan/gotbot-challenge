@@ -49,19 +49,21 @@ const deleteCategory = createAsyncThunk(
 );
 const updateCategory = createAsyncThunk(
   "/category/updateCategory",
-  async ({ name, image, menuId, category }: { name: string; image: string; menuId: string, category: string }) => {
+  async ({ name, image, menuId, category }: { name: string; image?: string; menuId: string, category: string }) => {
     const fileData = new FormData();
-    const categoryFile = base64ToFile(image);
-
-    let fileResponse: ICloudinaryFile | null = null;
-    if (categoryFile) {
-      fileData.append("file", categoryFile);
-      fileResponse = (await apiClient.post<ICloudinaryFile>("/file", fileData)).data;
-      const response = await apiClient.put(`/category/${category}?menu=${menuId}`, {
-        name,
-        image: fileResponse,
-      });
-      return response.data;
+    if(image){
+      const categoryFile = base64ToFile(image);
+  
+      let fileResponse: ICloudinaryFile | null = null;
+      if (categoryFile) {
+        fileData.append("file", categoryFile);
+        fileResponse = (await apiClient.post<ICloudinaryFile>("/file", fileData)).data;
+        const response = await apiClient.put(`/category/${category}?menu=${menuId}`, {
+          name,
+          image: fileResponse,
+        });
+        return response.data;
+      }
     }
 
     else{

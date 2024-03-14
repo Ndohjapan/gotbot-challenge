@@ -5,6 +5,7 @@ export interface IMenu {
   _id?: string;
   name: string;
   description?: string;
+  menu?: string;
   business?: string;
   categories?: number;
   items?: number;
@@ -34,7 +35,7 @@ export interface ICategoryFood {
 
 export interface INewMenu {
   name: string;
-  menu: string;
+  menu?: string;
   _id: string;
   description?: string;
 }

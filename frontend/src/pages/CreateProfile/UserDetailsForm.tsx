@@ -1,5 +1,4 @@
 import Field from "../../components/Form/Field";
-import Dropdown from "../../components/Form/Dropdown";
 import TextInput from "../../components/Form/TextInput";
 import Button from "../../components/Button";
 import PhoneInput from "../../components/Form/PhoneInput";
@@ -8,7 +7,6 @@ import { Contact } from "../../types/auth";
 import { useValidator } from "../../hooks/useValidator";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { authActions } from "../../redux/slices/authSlice";
-import { ICountry } from "country-state-city";
 import * as yup from "yup";
 
 const contactSchema = yup.object({
@@ -42,7 +40,7 @@ export default function UserDetailsForm({ onSubmit, prev }: UserDetailsFormProps
     setFormData({ ...formData, [name]: value });
   };
 
-  const { errors, validate, clearErrOnFocus } = useValidator(formData, contactSchema);
+  const { errors, clearErrOnFocus } = useValidator(formData, contactSchema);
 
   const handleButtonClick = async () => {
     dispatch(authActions.updateProfileData(formData));
