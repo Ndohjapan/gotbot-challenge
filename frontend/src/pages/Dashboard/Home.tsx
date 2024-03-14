@@ -190,14 +190,14 @@ export default function Home() {
                   key={`menu-card-${index}`}
                   onClick={() => handleMenuItemClick(menuItem._id!)}
                   onEditClick={() => {
-                    setFormData({ _id: menuItem._id, name: menuItem.name, description: menuItem.description });
+                    setFormData({ _id: menuItem._id || "", name: menuItem.name, description: menuItem.description || "" });
                     setMenuModal(true);
                     setUpdateState(true);
-                    setSelectedMenu(menuItem._id);
+                    setSelectedMenu(menuItem._id || "");
                   }}
                   onDeleteClick={() => {
                     setConfirmationModalVisible(true);
-                    setSelectedMenu(menuItem._id);
+                    setSelectedMenu(menuItem._id || "");
                   }}
                 />
                 </>

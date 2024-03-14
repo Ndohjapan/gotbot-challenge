@@ -67,30 +67,33 @@ const updateFood = createAsyncThunk(
     item
   }: {
     name: string;
-    image: string;
+    image?: string;
     price: number;
     menuId: string;
     categoryId: string;
     item: string;
   }) => {
     const fileData = new FormData();
-    const foodFile = base64ToFile(image);
-
-    let fileResponse: ICloudinaryFile | null = null;
-    if (foodFile) {
-      fileData.append("file", foodFile);
-      fileResponse = (await apiClient.post<ICloudinaryFile>("/file", fileData)).data;
-      const response = await apiClient.put(`/item/${item}?menu=${menuId}`, {
-        name,
-        price,
-        category: categoryId,
-        menu: menuId,
-        images: [fileResponse],
-        quantity: "Per Spoon",
-        currency: "NGN",
-      });
-      return response.data;
-    }else{
+    if(image){      
+      const foodFile = base64ToFile(image);
+  
+      let fileResponse: ICloudinaryFile | null = null;
+      if (foodFile) {
+        fileData.append("file", foodFile);
+        fileResponse = (await apiClient.post<ICloudinaryFile>("/file", fileData)).data;
+        const response = await apiClient.put(`/item/${item}?menu=${menuId}`, {
+          name,
+          price,
+          category: categoryId,
+          menu: menuId,
+          images: [fileResponse],
+          quantity: "Per Spoon",
+          currency: "NGN",
+        });
+        return response.data;
+      }
+    }
+    else{
       const response = await apiClient.put(`/item/${item}?menu=${menuId}`, {
         name,
         price,
