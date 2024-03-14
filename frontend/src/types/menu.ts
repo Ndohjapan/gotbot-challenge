@@ -1,10 +1,11 @@
 import { ICloudinaryFile } from "./auth";
 
 export interface IMenu {
-  created_at: Date | undefined;
+  created_at: string;
   _id?: string;
   name: string;
   description?: string;
+  menu?: string;
   business?: string;
   categories?: number;
   items?: number;
@@ -30,4 +31,11 @@ export interface IFood {
 export interface ICategoryFood {
   category: string;
   items: IFood[];
+}
+
+export interface INewMenu {
+  name: string;
+  menu?: string;
+  _id: string;
+  description?: string;
 }

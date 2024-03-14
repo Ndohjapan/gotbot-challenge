@@ -46,7 +46,7 @@ export default function Category() {
   const [modalVisible, setModalVisible] = useState(false);
   const [confirmationModalVisible, setConfirmationModalVisible] = useState(false);
   const [updateState, setUpdateState] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const { errors, validate, clearErrOnFocus } = useValidator(formData, categorySchema);
 
@@ -212,11 +212,11 @@ export default function Category() {
                       setFormData({ _id: category._id, name: menu.name, image: menu.image });
                       setModalVisible(true);
                       setUpdateState(true);
-                      setSelectedCategory(category._id);
+                      setSelectedCategory(category._id || "");
                     }}
                     onDeleteClick={() => {
                       setConfirmationModalVisible(true);
-                      setSelectedCategory(category._id);
+                      setSelectedCategory(category._id || "");
                     }}
                   />
                 );

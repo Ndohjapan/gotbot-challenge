@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useValidator } from "../../hooks/useValidator";
-import { IMenu } from "../../types/menu";
+import { INewMenu } from "../../types/menu";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { menuActions } from "../../redux/slices/menuSlice";
 import NoMenuSvg from "../../assets/dashboard/no-menu.svg";
@@ -47,16 +47,18 @@ export default function Home() {
   const { loading, menus, submitting } = useAppSelector((state) => state.menu);
 
   const [updateState, setUpdateState] = useState(false);
-  const [selectedMenu, setSelectedMenu] = useState(null);
+  const [selectedMenu, setSelectedMenu] = useState("");
 
   useEffect(() => {
     dispatch(menuActions.fetchMenus());
   }, [dispatch]);
 
   const [menuModal, setMenuModal] = useState(false);
-  const [formData, setFormData] = useState<IMenu>({
+  const [formData, setFormData] = useState<INewMenu>({
     name: "",
     description: "",
+    menu: "",
+    _id: ""
   });
 
   const [confirmationModalVisible, setConfirmationModalVisible] = useState(false);
@@ -85,14 +87,14 @@ export default function Home() {
   const handleCreateMenuClick = async () => {
     if (await validate()) {
       await dispatch(menuActions.createMenu({ menu: formData }));
-      setFormData({ name: "", description: "" });
+      setFormData({ name: "", description: "", menu: "", _id: "" });
       setMenuModal(false);
     }
   };
 
   const handleUpdateMenuClick = async () => {
     await dispatch(menuActions.updateMenu({ menu: formData, menuId: selectedMenu }));
-    setFormData({ name: "", description: "", menu: "" });
+    setFormData({ name: "", description: "", menu: "", _id: "" });
     setMenuModal(false);
   };
 
@@ -102,7 +104,7 @@ export default function Home() {
         menuId: selectedMenu,
       })
     );
-    setFormData({ name: "", description: "" });
+    setFormData({ name: "", description: "", menu: "", _id: ""});
     setConfirmationModalVisible(false);
   };
 
@@ -188,14 +190,14 @@ export default function Home() {
                   key={`menu-card-${index}`}
                   onClick={() => handleMenuItemClick(menuItem._id!)}
                   onEditClick={() => {
-                    setFormData({ _id: menuItem._id, name: menuItem.name, description: menuItem.description });
+                    setFormData({ _id: menuItem._id || "", name: menuItem.name, description: menuItem.description || "" });
                     setMenuModal(true);
                     setUpdateState(true);
-                    setSelectedMenu(menuItem._id);
+                    setSelectedMenu(menuItem._id || "");
                   }}
                   onDeleteClick={() => {
                     setConfirmationModalVisible(true);
-                    setSelectedMenu(menuItem._id);
+                    setSelectedMenu(menuItem._id || "");
                   }}
                 />
                 </>

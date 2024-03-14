@@ -1,8 +1,8 @@
 FROM node:lts-alpine as build
 WORKDIR /app 
-COPY package.json yarn.lock ./
+COPY package.json ./
 RUN yarn install
 COPY . .
 
-EXPOSE 5173
-CMD ["npm", "run", "dev"]
+EXPOSE 5000
+CMD ["npm", "run", "start"]

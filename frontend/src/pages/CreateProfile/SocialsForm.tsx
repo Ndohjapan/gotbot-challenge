@@ -33,7 +33,7 @@ export default function SocialsForm({ prev, loading, onSubmit }: SocialsFormProp
     dispatch(authActions.updateProfileData({ [name]: value }));
   };
 
-  const { errors, validate } = useValidator(formData, socialSchema);
+  const { errors } = useValidator(formData, socialSchema);
 
   const handleSubmit = async () => {
     onSubmit();
