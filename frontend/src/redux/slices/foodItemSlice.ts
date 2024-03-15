@@ -91,6 +91,16 @@ const updateFood = createAsyncThunk(
           currency: "NGN",
         });
         return response.data;
+      } else {
+        const response = await apiClient.put(`/item/${item}?menu=${menuId}`, {
+          name,
+          price,
+          category: categoryId,
+          menu: menuId,
+          quantity: "Per Spoon",
+          currency: "NGN",
+        });
+        return response.data;
       }
     }
     else{
@@ -146,6 +156,7 @@ const foodItemSlice = createSlice({
       })
       .addCase(updateFood.fulfilled, (state, action: PayloadAction<IFood>) => {
         state.submitting = false;
+        console.log(action.payload);
         const update = state.foods.map(obj => obj._id === action.payload._id ? action.payload : obj)
         state.foods = update;
       })

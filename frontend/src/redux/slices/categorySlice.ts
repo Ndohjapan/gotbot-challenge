@@ -1,3 +1,4 @@
+
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { ICategory } from "../../types/menu";
 import { apiClient } from "../../api/apiClient";
@@ -49,11 +50,21 @@ const deleteCategory = createAsyncThunk(
 );
 const updateCategory = createAsyncThunk(
   "/category/updateCategory",
-  async ({ name, image, menuId, category }: { name: string; image?: string; menuId: string, category: string }) => {
+  async ({
+    name,
+    image,
+    menuId,
+    category,
+  }: {
+    name: string;
+    image?: string;
+    menuId: string;
+    category: string;
+  }) => {
     const fileData = new FormData();
-    if(image){
+    if (image) {
       const categoryFile = base64ToFile(image);
-  
+
       let fileResponse: ICloudinaryFile | null = null;
       if (categoryFile) {
         fileData.append("file", categoryFile);
@@ -63,16 +74,18 @@ const updateCategory = createAsyncThunk(
           image: fileResponse,
         });
         return response.data;
+      } else {
+        const response = await apiClient.put(`/category/${category}?menu=${menuId}`, {
+          name,
+        });
+        return response.data;
       }
-    }
-
-    else{
+    } else {
       const response = await apiClient.put(`/category/${category}?menu=${menuId}`, {
         name,
       });
       return response.data;
     }
-
   }
 );
 
@@ -102,7 +115,9 @@ const categorySlice = createSlice({
       })
       .addCase(updateCategory.fulfilled, (state, action: PayloadAction<ICategory>) => {
         state.submitting = false;
-        const update = state.categories.map(obj => obj._id === action.payload._id ? action.payload : obj)
+        const update = state.categories.map((obj) =>
+          obj._id === action.payload._id ? action.payload : obj
+        );
         state.categories = update;
       })
       .addCase(updateCategory.rejected, (state) => {
@@ -113,8 +128,8 @@ const categorySlice = createSlice({
       })
       .addCase(deleteCategory.fulfilled, (state) => {
         state.submitting = false;
-        const update = state.categories.filter(obj => obj._id !== deleteItemId);
-        deleteItemId = ''
+        const update = state.categories.filter((obj) => obj._id !== deleteItemId);
+        deleteItemId = "";
         state.categories = update;
       })
       .addCase(deleteCategory.rejected, (state) => {
