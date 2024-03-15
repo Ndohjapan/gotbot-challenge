@@ -23,7 +23,7 @@ jobs:
         run: yarn
 
       - name: Build
-        working-directory: frontend 
+        working-directory: frontend # Set the working directory to the frontend folder
         run: yarn build
 
       - name: Deploy to S3
@@ -37,4 +37,4 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           VITE_BACKEND_URL: ${{ secrets.VITE_BACKEND_URL }}
           VITE_FRONTEND_URL: ${{ secrets.VITE_FRONTEND_URL }}
-          SOURCE_DIR: frontend/dist 
+          SOURCE_DIR: frontend/dist # Specify the path to the build output within the frontend folder
