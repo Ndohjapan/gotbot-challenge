@@ -9,7 +9,7 @@ const service = new FileService();
 
 router.post(
   '/',
-  rateLimiter({ secondsWindow: 60, allowedHits: 10 }),
+  rateLimiter({ secondsWindow: 60, allowedHits: 30 }),
   businessAuth,
   catchAsync(async (req, res) => {
     const business = req.user._id;
