@@ -15,6 +15,7 @@ import ModalHeader from "../../components/Modals/ModalHeader";
 import TextArea from "../../components/Form/TextArea";
 import Loader from "../../components/Loader";
 import * as yup from "yup";
+import React from "react";
 
 function NoMenuItem({ onButtonClick }: { onButtonClick: () => void }) {
   return (
@@ -96,6 +97,7 @@ export default function Home() {
     await dispatch(menuActions.updateMenu({ menu: formData, menuId: selectedMenu }));
     setFormData({ name: "", description: "", menu: "", _id: "" });
     setMenuModal(false);
+    setUpdateState(false);
   };
 
   const handleDeleteMenu = async () => {

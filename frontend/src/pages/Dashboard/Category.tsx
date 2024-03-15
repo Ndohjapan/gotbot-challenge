@@ -19,6 +19,7 @@ import { categoryActions } from "../../redux/slices/categorySlice";
 import { fileTest } from "../../utils/files";
 import { ICloudinaryFile } from "../../types/auth";
 import * as yup from "yup";
+import React from "react";
 
 const categorySchema = yup.object({
   name: yup

@@ -21,7 +21,7 @@ CLIENT_URL=http://localhost:5173/verify/
 CLOUDINARY_API_KEY=183515467334351
 CLOUDINARY_API_SECRET=an5k38ts6Qt2keTXcMrXQ9LM_Ik
 CLOUDINARY_CLOUD_NAME=lcu-feeding
-DB_URL=mongodb://127.0.0.1:27017/kota
+DB_URL=mongodb://mongodb:27017/kota
 JWT_SECRET=ewinfewnjifiewjbnfiewenwinfewinjewew
 REDISCLOUD_URL=redis
 ZEPTOMAIL_API_KEY=yA6KbHtS7Q2iwj8FQEM81pOD84o1/6gxjH/ktS7jfcEkLtm33KFtgRRodIe5JjbeiofZta5Za9gYdYC4udAKesYzYdYAepTGTuv4P2uV48xh8ciEYNYmhZSsALIWGqRMchsiCSo2RPEjWA==

@@ -19,6 +19,7 @@ import DropZone from "../../components/Form/DropZone";
 import Loader from "../../components/Loader";
 import QRModal from "../../components/Menu/QRModal";
 import * as yup from "yup";
+import React from "react";
 
 const foodSchema = yup.object({
   name: yup
