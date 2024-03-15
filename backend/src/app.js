@@ -32,7 +32,7 @@ app.use(baseRoute + '/item', item);
 app.use(baseRoute + '/file', file);
 app.use(baseRoute + '/profile', business);
 
-app.get('/health', (req, res) => {
+app.get(baseRoute + '/health', (req, res) => {
   res.send({ health: 'Ok' });
 });
 
