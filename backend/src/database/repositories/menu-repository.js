@@ -25,7 +25,7 @@ class MenuRepository {
   async FindAll(business) {
     try {
       const categories = await Menu.find(
-        { business },
+        { business, active: true },
         { __v: 0, active: 0 },
       );
       return categories;
