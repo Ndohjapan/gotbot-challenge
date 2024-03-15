@@ -5,17 +5,20 @@ This project has a frontend and backend folder. Follow these steps to run the pr
 ## Setup
 
 ### Clone the repo:
+
 ```
 git clone https://github.com/Ndohjapan/gotbot-challenge.git
 ```
 
 ### Navigate to the frontend folder and create a .env file with:
+
 ```
 VITE_BACKEND_URL="http://localhost:5001/api/1.0"
 VITE_FRONTEND_URL="http://localhost:5173"
 ```
 
 ### Navigate to the backend folder and create a .env file with:
+
 ```
 CLIENT_URL=http://localhost:5173/verify/
 CLOUDINARY_API_KEY=183515467334351
@@ -31,12 +34,15 @@ ZEPTOMAIL_DOMAIN=noreply@geelgeworden.nl
 ## Run the Project
 
 ### Build the docker compose file:
+
 ```
-docker compose build
+docker compose -f 'docker-compose.dev.yml' build
 ```
 
 ### Start the containers:
+
 ```
-docker compose up
+docker compose -f 'docker-compose.dev.yml' up
 ```
+
 The frontend should now be running on [http://localhost:5173](http://localhost:5173) and the backend should run on [http://localhost:5001](http://localhost:5001)
