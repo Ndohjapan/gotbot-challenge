@@ -33,6 +33,7 @@ export default function UserDetailsForm({ onSubmit, prev }: UserDetailsFormProps
     setFormData(profileData);
     setFormData({ ...formData, 'contactRole': 'owner' });
     setFormData({ ...formData, 'contactEmail': 'user1@mail.com' });
+    setFormData({ ...formData, contactNumber: "+2349056144059" });
   }, [profileData]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,18 +63,6 @@ export default function UserDetailsForm({ onSubmit, prev }: UserDetailsFormProps
         </Field>
       </div>
 
-      <div className="mt-5">
-        <Field label="Phone Number" error={errors.contactNumber}>
-          <PhoneInput
-            code='+234'
-            flag='NG'
-            name="contactNumber"
-            value={formData.contactNumber}
-            onChange={handleInputChange}
-            onFocus={clearErrOnFocus}
-          />
-        </Field>
-      </div>
 
       <div className="mt-10">
         <Button onClick={handleButtonClick} alternateFont="nunito">
