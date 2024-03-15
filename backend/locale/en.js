@@ -6,7 +6,7 @@ module.exports = {
   'server-error': 'Something went wrong',
   'email-and-business-name-unique': 'Email or Business name already exists',
   'business-name-unique': 'Business name already exists',
-  'business-not-verified': 'Business is not verified',
+  'business-not-verified': 'Check your email for verification link',
   'email-unique': 'Email already exists',
   'email-required': 'Email is required',
   'country-required': 'Country is required',
