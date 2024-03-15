@@ -80,6 +80,7 @@ const menuSlice = createSlice({
       .addCase(updateMenu.fulfilled, (state, action: PayloadAction<IMenu>) => {
         const update = state.menus.map(obj => obj._id === action.payload._id ? action.payload : obj)
         state.menus = update;
+        console.log(action.payload);
         state.submitting = false;
       })
       .addCase(updateMenu.rejected, (state) => {
