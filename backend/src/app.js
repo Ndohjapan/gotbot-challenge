@@ -32,6 +32,10 @@ app.use(baseRoute + '/item', item);
 app.use(baseRoute + '/file', file);
 app.use(baseRoute + '/profile', business);
 
+app.get('/health', (req, res) => {
+  res.send({ health: 'Ok' });
+});
+
 app.use((req, res, next) => {
   next(new NotFundException(en['page-not-found']));
 });
