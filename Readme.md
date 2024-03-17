@@ -42,7 +42,7 @@ docker compose -f 'docker-compose.dev.yml' build
 ### Start the containers:
 
 ```
-docker compose -f 'docker-compose.dev.yml' up
+docker compose -f 'docker-compose.dev.yml' up -d
 ```
 
 The frontend should now be running on [http://localhost:5173](http://localhost:5173) and the backend should run on [http://localhost:5001](http://localhost:5001)
